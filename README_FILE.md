@@ -1,5 +1,5 @@
 # Introduction
-📊 Dive into the data job market! Focusing on data analyst roles, this project explores 💰 top-paying jobs, 🔥 in-demand skills, and 📈 where high demand meets high salary in data analytics.
+📊 Dive into the data job market! Focusing on data analyst roles, this project explores 💰 top-paying jobs, 🔥 in-demand skills, and 📈 where high demand meets high salary in data analytics.(And we'll be focusing just on Canada)
 
 🔍 SQL queries? Check them out here: [project_sql folder](/My_Project_sql/)
 
@@ -50,8 +50,12 @@ salary_year_avg is not null
 ORDER BY salary_year_avg desc
 limit 10
 ```
+![](assets/q1.png)
+
+Here are the salary insights for the top Data Analyst job titles in Canada (2023), based on your dataset.
 
 ✅ Salary Insights from the Job Titles
+
 1. Highest-Paying Data Analyst Roles
 
 The top earners in your dataset are:
@@ -99,13 +103,13 @@ The top earners in your dataset are:
 
 Roles tied to:
 
-Risk analytics
+**Risk analytics**
 
-Growth/marketing analytics
+**Growth/marketing analytics**
 
-Engineering/architecture
+**Engineering/architecture**
 
-Tool specialization (Tableau, VBA)
+**Tool specialization (Tableau, VBA)**
 tend to pay more.
 
 2. Gaming Industry Pays Well
@@ -162,12 +166,14 @@ on sjd.skill_id=sd.skill_id
 
 The most frequently requested skills are:
 
-Skill	Count
-SQL	7
-Python	7
-Spark	3
-Excel	3
-Tableau	3
+| Skill       | Count |
+| ----------- | ----- |
+| **SQL**     | 7     |
+| **Python**  | 7     |
+| **Spark**   | 3     |
+| **Excel**   | 3     |
+| **Tableau** | 3     |
+
 
 ➡️ Insight:
 SQL and Python dominate equally — these are foundational skills in almost all data analyst job postings. Spark, Excel, and Tableau form the next tier, indicating a strong emphasis on data processing and visualization.
@@ -176,10 +182,12 @@ SQL and Python dominate equally — these are foundational skills in almost all 
 
 Moderately requested skills include:
 
-Skill	Count
-Hadoop	2
-SAS	2
-Sheets	2
+| Skill  | Count |
+| ------ | ----- |
+| Hadoop | 2     |
+| SAS    | 2     |
+| Sheets | 2     |
+
 
 ➡️ Insight:
 These tools show that some roles favor traditional analytics (SAS), big-data ecosystems (Hadoop), or cloud-based spreadsheets (Sheets).
@@ -227,6 +235,15 @@ Cloud platforms and BI tools appear in small numbers but signal growing diversif
 
 A mix of traditional tools (Excel, SAS) and modern ones (Databricks, BigQuery) shows hybrid expectations in the job market.
 
+
+
+
+
+![](assets/q2a.png)
+
+Here are your results — including the bar chart, skill clusters, and personalized learning recommendations:
+
+
 📊 Skill Frequency Bar Chart
 
 The bar chart has been generated above using your dataset. It visually highlights how SQL and Python dominate job postings, with a second tier of tools like Spark, Excel, and Tableau.
@@ -236,55 +253,67 @@ The bar chart has been generated above using your dataset. It visually highlight
 Using rule-based grouping, here are the clusters and how strongly each appears in your dataset:
 
 1. Programming
-Skill	Count
-Python	7
-JavaScript	1
-TypeScript	1
-VBA	1
+| Skill      | Count |
+| ---------- | ----- |
+| Python     | 7     |
+| JavaScript | 1     |
+| TypeScript | 1     |
+| VBA        | 1     |
+
 
 ➡️ Python is essential; other languages appear in hybrid analyst–developer roles.
 
 2. Data Engineering / Big Data
-Skill	Count
-Spark	3
-Hadoop	2
-Databricks	1
-BigQuery	1
+| Skill      | Count |
+| ---------- | ----- |
+| Spark      | 3     |
+| Hadoop     | 2     |
+| Databricks | 1     |
+| BigQuery   | 1     |
+
 
 ➡️ Shows growing demand for analysts comfortable with scalable data pipelines.
 
 3. Databases
-Skill	Count
-SQL	7
+| Skill | Count |
+| ----- | ----- |
+| SQL   | 7     |
 
 ➡️ SQL remains the single most in-demand skill — universally required.
 
 4. Analytics / Statistical Tools
-Skill	Count
-SAS	2
-SPSS	1
+| Skill | Count |
+| ----- | ----- |
+| SAS   | 2     |
+| SPSS  | 1     |
 
 ➡️ Common in government, healthcare, and enterprise roles.
 
 5. Business Intelligence / Visualization
-Skill	Count
-Tableau	3
-Looker	1
-Visio	1
+| Skill   | Count |
+| ------- | ----- |
+| Tableau | 3     |
+| Looker  | 1     |
+| Visio   | 1     |
+
 
 ➡️ Shows a consistent demand for dashboarding and storytelling.
 
 6. Productivity & Collaboration Tools
-Skill	Count
-Excel	3
-Sheets	2
-JIRA	1
+| Skill  | Count |
+| ------ | ----- |
+| Excel  | 3     |
+| Sheets | 2     |
+| JIRA   | 1     |
+
 
 ➡️ Excel continues to be critical; Sheets appears in tech startups.
 
 7. Cloud
-Skill	Count
-Azure	1
+| Skill | Count |
+| ----- | ----- |
+| Azure | 1     |
+
 
 ➡️ Cloud skills are emerging and will grow in importance.
 
@@ -361,12 +390,14 @@ Takeaway: Base salaries for data analysts in Canada seem to cluster around CAD 6
 
 Mapping this against the skill clusters from your earlier dataset:
 
-Skill Cluster / Typical Skills	Likely Salary Impact / Why
-Core: SQL, Python, Excel — widely demanded	Meets baseline requirement; earns you entry to mid-level pay (~ CAD 65–75 k).
-BI / Visualization (e.g. Tableau)	Adds ability to deliver insights to stakeholders — tends to push toward mid-to upper-range (~ CAD 75–95 k).
-Big Data / Data Engineering tools (e.g. Spark, Hadoop, BigQuery, Databricks)	Rare and more advanced — companies needing those may pay a premium (upper end of salary spectrum, sometimes closer to “senior” pay).
-Cloud / Data-stack / Advanced Analytics tools (Azure, advanced toolsets)	Often required for more complex data roles — can help you reach upper salary bands or specialized (higher-paying) roles.
-Statistical / Analytical Tools (SAS, SPSS), scripting, mixed-skill stack	Niche or domain-specific — useful for specialized sectors (e.g. healthcare, research), likely to yield salary bumps depending on demand.
+| Skill Cluster / Typical Skills                                                   | Likely Salary Impact / Why                                                                                                               |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **Core: SQL, Python, Excel** — widely demanded                                   | Meets baseline requirement; earns you entry to mid-level pay (~ CAD 65–75 k).                                                            |
+| **BI / Visualization** (e.g. Tableau)                                            | Adds ability to deliver insights to stakeholders — tends to push toward mid-to upper-range (~ CAD 75–95 k).                              |
+| **Big Data / Data Engineering tools** (e.g. Spark, Hadoop, BigQuery, Databricks) | Rare and more advanced — companies needing those may pay a premium (upper end of salary spectrum, sometimes closer to “senior” pay).     |
+| **Cloud / Data-stack / Advanced Analytics tools** (Azure, advanced toolsets)     | Often required for more complex data roles — can help you reach upper salary bands or specialized (higher-paying) roles.                 |
+| **Statistical / Analytical Tools (SAS, SPSS), scripting, mixed-skill stack**     | Niche or domain-specific — useful for specialized sectors (e.g. healthcare, research), likely to yield salary bumps depending on demand. |
+
 
 Interpretation: If your skill set remains only “core,” you’ll likely be in the baseline / mid-level range. Employers looking for “full-stack” analytics + data engineering + BI/reporting tend to pay more — so the more advanced or broader your skills, the higher likely your salary.
 
@@ -428,6 +459,7 @@ This aligns with hiring trends across Canada, where companies pay more for analy
 🧠 Insight
 
 Each tier adds roughly $15k–$20k to earning potential.
+
 
 
 
