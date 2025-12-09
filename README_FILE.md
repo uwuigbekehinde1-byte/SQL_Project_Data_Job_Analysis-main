@@ -253,6 +253,7 @@ The bar chart has been generated above using your dataset. It visually highlight
 Using rule-based grouping, here are the clusters and how strongly each appears in your dataset:
 
 1. Programming
+   
 | Skill      | Count |
 | ---------- | ----- |
 | Python     | 7     |
@@ -264,6 +265,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ Python is essential; other languages appear in hybrid analyst–developer roles.
 
 2. Data Engineering / Big Data
+   
 | Skill      | Count |
 | ---------- | ----- |
 | Spark      | 3     |
@@ -275,6 +277,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ Shows growing demand for analysts comfortable with scalable data pipelines.
 
 3. Databases
+   
 | Skill | Count |
 | ----- | ----- |
 | SQL   | 7     |
@@ -282,6 +285,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ SQL remains the single most in-demand skill — universally required.
 
 4. Analytics / Statistical Tools
+   
 | Skill | Count |
 | ----- | ----- |
 | SAS   | 2     |
@@ -290,6 +294,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ Common in government, healthcare, and enterprise roles.
 
 5. Business Intelligence / Visualization
+   
 | Skill   | Count |
 | ------- | ----- |
 | Tableau | 3     |
@@ -300,6 +305,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ Shows a consistent demand for dashboarding and storytelling.
 
 6. Productivity & Collaboration Tools
+   
 | Skill  | Count |
 | ------ | ----- |
 | Excel  | 3     |
@@ -310,6 +316,7 @@ Using rule-based grouping, here are the clusters and how strongly each appears i
 ➡️ Excel continues to be critical; Sheets appears in tech startups.
 
 7. Cloud
+   
 | Skill | Count |
 | ----- | ----- |
 | Azure | 1     |
@@ -460,8 +467,142 @@ This aligns with hiring trends across Canada, where companies pay more for analy
 
 Each tier adds roughly $15k–$20k to earning potential.
 
+### 3. In-Demand Skills for Data Analysts
+
+```sql
+WITH canada_job_skills AS (
+    SELECT 
+        skill_id,
+        COUNT(*) AS skill_count
+    FROM
+        skills_job_dim AS skills_to_job
+    INNER JOIN job_postings_fact AS job_postings ON job_postings.job_id = skills_to_job.job_id
+    WHERE
+        job_postings.job_location Ilike '%canada%' AND
+        job_postings.job_title_short = 'Data Analyst'
+    GROUP BY
+        skill_id
+)
+
+SELECT 
+    skills.skill_id,
+    skills AS skill_name,
+    skill_count  
+FROM canada_job_skills
+INNER JOIN skills_dim AS skills ON skills.skill_id = canada_job_skills.skill_id
+ORDER BY
+    skill_count DESC
+LIMIT 5;
+```
+
+
+![](assets/q3.png)
 
 
 
+✅ Short Insight
 
+Based on your CSV file, these are the most in-demand data analyst skills in Canada (2023):
+
+SQL is the #1 most required skill with 963 mentions, making it the foundation for almost all data analyst roles.
+
+Excel and Python follow strongly, highlighting the importance of both spreadsheet proficiency and programming.
+
+Tableau and Power BI also appear frequently, showing that data visualization and dashboarding remain crucial for communicating insights.
+
+The distribution shows a clear hierarchy:
+SQL → Excel → Python → Tableau → Power BI
+
+In summary, Canadian employers heavily prioritize data querying (SQL), analysis (Excel/Python), and visualization (Tableau/Power BI)—a full-stack analytics skillset.
+
+📊 Visualization: Most In-Demand Skills
+
+A clean horizontal bar chart was generated for you above, showing each skill ordered by demand count.
+
+
+### 4. Skills Based on Salary Canada
+```sql
+SELECT 
+    skills,
+    ROUND(AVG(salary_year_avg), 0) AS avg_salary
+FROM job_postings_fact
+INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE
+    job_title_short = 'Data Analyst'
+    AND salary_year_avg IS NOT NULL
+    AND job_location Ilike 'canada' 
+GROUP BY
+    skills
+ORDER BY
+    avg_salary DESC
+LIMIT 25;
+```
+
+![](assets/q4.png)
+
+✅ Short Insight
+
+dataset shows clear salary stratification across technical skills relevant to data and analytics roles in Canada:
+
+🔝 Highest-paying skills
+
+TypeScript, Spark, and Hadoop top the list with salaries above $107K, indicating strong demand for big data engineering and full-stack/data-oriented development.
+
+Azure and Databricks (~$101K) continue the trend—cloud and modern data platform skills pay a premium.
+
+📈 Mid-tier salaries
+Python, Tableau, SQL, Excel fall between $83K–94K, representing core data analytics and data science tooling widely used in the industry.
+
+📉 Lower-paying skills
+Power BI and Word/Outlook/PowerPoint appear as general business tools, not specialized technical skills—thus they are associated with lower salaries.
+
+💡 Overall Insight
+
+The salary distribution shows that data engineering, cloud computing, and large-scale data technologies command the highest pay.
+Meanwhile, traditional analytics tools (Excel, SQL, Tableau) earn solid mid-level salaries, and general office skills earn the least.
+
+### 5. Most Optimal Skills to Learn
+
+```sql
+SELECT 
+    skills_dim.skill_id,
+    skills_dim.skills,
+    COUNT(skills_job_dim.job_id) AS demand_count,
+    ROUND(AVG(job_postings_fact.salary_year_avg), 0) AS avg_salary
+FROM job_postings_fact
+INNER JOIN skills_job_dim ON job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE
+    job_title_short = 'Data Analyst'
+    AND salary_year_avg IS NOT NULL
+    AND job_location Ilike '%canada%'
+GROUP BY
+    skills_dim.skill_id
+HAVING
+    COUNT(skills_job_dim.job_id) > 10
+ORDER BY
+    avg_salary DESC,
+    demand_count DESC
+LIMIT 25;
+```
+
+![](assets/q5a.png)
+
+
+
+Quick Insight: SQL shows slightly higher demand (16 postings vs. 14 for Python), but Python offers a higher average salary ($92,494 vs. $89,285). This suggests employers value SQL proficiency broadly, while Python skills command a premium in compensation.
+Here’s the visualization you asked for, styled with a bold dark theme and neon accents:
+
+![](assets/q5b.png)
+
+
+### 🔎 Key Takeaways
+- **SQL demand edge:** With 16 postings, SQL is marginally more requested than Python (14 postings).  
+- **Python salary premium:** Despite lower demand, Python averages about **$3,200 more per year** in salary.  
+- **Interpretation:** SQL remains foundational and widely required, but Python’s versatility in data science, automation, and AI makes it more lucrative.  
+
+### 📊 Why This Matters
+- For professionals in Canada, **SQL mastery ensures employability**, while **Python expertise boosts earning potential**.  
+- Combining both skills positions you strongly: SQL for database/reporting roles and Python for advanced analytics, machine learning, and automation.  
 
